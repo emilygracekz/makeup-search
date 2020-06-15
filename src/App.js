@@ -31,7 +31,6 @@ function App() {
       )
       .then(
         (res) => {
-          // console.log(res.data);
           setItems(res.data);
         },
         (error) => {
@@ -40,28 +39,30 @@ function App() {
       );
   }
 
-  console.log(items);
   return (
-    <Container>
-      <input
-        required
-        type="text"
-        className="brandSearch"
-        value={brand}
-        onChange={(e) => {
-          setBrand(e.target.value);
-        }}
-      />
-      <input
-        required
-        type="text"
-        className="productSearch"
-        value={product}
-        onChange={(e) => {
-          setProduct(e.target.value);
-        }}
-      />
-      <button onClick={handleClick}>SEARCH</button>
+    <Container className="container">
+      <h1>The Makeup Database</h1>
+      <Row>
+        <input
+          required
+          type="text"
+          className="brandSearch"
+          value={brand}
+          onChange={(e) => {
+            setBrand(e.target.value);
+          }}
+        />
+        <input
+          required
+          type="text"
+          className="productSearch"
+          value={product}
+          onChange={(e) => {
+            setProduct(e.target.value);
+          }}
+        />
+        <button onClick={handleClick}>SEARCH</button>
+      </Row>
       {/* if there are items render Result if not don't render result. Boolean if statement */}
       {items && <Result items={items} />}
     </Container>
@@ -81,4 +82,39 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   align-content: center;
+  height: 100vh;
+
+  h1 {
+    font-family: "Sofia", cursive;
+    font-size: 10vh;
+    color: #9ea1af;
+  }
+
+  input {
+    border-radius: 30px;
+    border: transparent;
+    margin-right: 1vh;
+    color: black;
+    font-size: 2vh;
+    font-weight: bold;
+    padding-left: 2vh;
+    border: 1px solid gray;
+  }
+
+  button {
+    background: #373737;
+    color: white;
+    font-weight: bold;
+    border: transparent;
+    width: 10vh;
+    height: 5vh;
+    border-radius: 30px;
+  }
+`;
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px;
 `;
