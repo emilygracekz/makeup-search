@@ -42,8 +42,13 @@ function App() {
   return (
     <Container className="container">
       <h1>The Makeup Database</h1>
+      <p>
+        Search for 10 different <a href="/">products</a> from 57{" "}
+        <a href="/">brands</a>
+      </p>
       <Row>
         <input
+          placeholder="Covergirl"
           required
           type="text"
           className="brandSearch"
@@ -53,6 +58,7 @@ function App() {
           }}
         />
         <input
+          placeholder="Eyeliner"
           required
           type="text"
           className="productSearch"
@@ -61,7 +67,11 @@ function App() {
             setProduct(e.target.value);
           }}
         />
-        <button onClick={handleClick}>SEARCH</button>
+        <button onClick={handleClick}>
+          <span role="img" aria-label="search">
+            🔎
+          </span>
+        </button>
       </Row>
       {/* if there are items render Result if not don't render result. Boolean if statement */}
       {items && <Result items={items} />}
@@ -85,9 +95,25 @@ const Container = styled.div`
   height: 100vh;
 
   h1 {
-    font-family: "Sofia", cursive;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-style: italic;
     font-size: 10vh;
-    color: #9ea1af;
+    color: #2e364f;
+    margin-bottom: 0px;
+  }
+
+  a {
+    font-weight: bold;
+    color: #f98e8a;
+    font-size: 3vh;
+  }
+
+  p {
+    font-family: "Roboto", sans-serif;
+    color: black;
+    margin-bottom: 3vh;
+    font-size: 3vh;
   }
 
   input {
@@ -102,13 +128,11 @@ const Container = styled.div`
   }
 
   button {
-    background: #373737;
-    color: white;
+    font-size: 4vh;
+    background: transparent;
     font-weight: bold;
     border: transparent;
-    width: 10vh;
     height: 5vh;
-    border-radius: 30px;
   }
 `;
 

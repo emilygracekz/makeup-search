@@ -33,6 +33,7 @@ const Box = styled.div`
   flex-direction: column;
   justify-content: center;
   background: white;
+  border-radius: 30px;
 
   img {
     height: 25vh;
