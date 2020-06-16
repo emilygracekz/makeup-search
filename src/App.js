@@ -7,6 +7,9 @@ import styled from "@emotion/styled";
 const Result = ({ items }) => {
   if (items === undefined) {
     return null;
+  } else if (items === []) {
+    console.log("it works");
+    return <p>Oops! We didn't find anything for that.</p>;
   } else {
     return (
       <Grid>
@@ -93,6 +96,8 @@ const Container = styled.div`
   align-items: center;
   align-content: center;
   height: 100vh;
+  position: absolute;
+  width: 100%;
 
   h1 {
     font-family: "Roboto", sans-serif;
