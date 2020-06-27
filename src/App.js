@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, FunctionComponent } from "react";
 import "./App.css";
 import axios from "axios";
 import ProductCard from "./components/productCard";
@@ -21,7 +21,27 @@ const Result = ({ items }) => {
   }
 };
 
-function App() {
+// api_featured_image: string
+// brand: string
+// category: string
+// created_at: string
+// currency?: number
+// description: string
+// id: number
+// image_link: string
+// name: string
+// price: string
+// price_sign?: string
+// product_api_url: string
+// product_colors: []
+// product_link: string
+// product_type: string
+// rating?: number
+// tag_list?: ?
+// updated_at: string
+// website_link: string
+
+const App = () => {
   const [items, setItems] = useState();
   const [error, setError] = useState();
   const [brand, setBrand] = useState("");
@@ -41,6 +61,7 @@ function App() {
         }
       );
   }
+  console.log(items);
 
   return (
     <Container className="container">
@@ -80,7 +101,7 @@ function App() {
       {items && <Result items={items} />}
     </Container>
   );
-}
+};
 
 export default App;
 

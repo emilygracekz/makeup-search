@@ -1,7 +1,17 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 
-const ProductCard = ({ api_featured_image, name, price, rating }) => {
+interface Props {
+  api_featured_image: string;
+  name: string;
+  price: string;
+}
+
+const ProductCard: FunctionComponent<Props> = ({
+  api_featured_image,
+  name,
+  price,
+}) => {
   return (
     <Container>
       <Box>
@@ -27,7 +37,7 @@ const Container = styled.div`
 
 const Box = styled.div`
   padding: 1vh;
-  height: 45vh;
+  height: 55vh;
   width: 30vh;
   align-content: center;
   display: flex;
