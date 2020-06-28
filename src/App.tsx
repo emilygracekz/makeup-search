@@ -1,48 +1,57 @@
 import React, { useState, FunctionComponent } from "react";
 import "./App.css";
 import axios from "axios";
-import ProductCard from "./components/productCard";
+import Result from "./components/result";
 import styled from "@emotion/styled";
 
-const Result = ({ items }) => {
-  if (items === undefined) {
-    return null;
-  } else if (items === []) {
-    console.log("it works");
-    return <p>Oops! We didn't find anything for that.</p>;
-  } else {
-    return (
-      <Grid>
-        {items.map(function (item, id) {
-          return <ProductCard key={id} {...item} />;
-        })}
-      </Grid>
-    );
-  }
-};
-
-// api_featured_image: string
-// brand: string
-// category: string
-// created_at: string
-// currency?: number
-// description: string
-// id: number
-// image_link: string
-// name: string
-// price: string
-// price_sign?: string
-// product_api_url: string
-// product_colors: []
-// product_link: string
-// product_type: string
-// rating?: number
-// tag_list?: ?
-// updated_at: string
-// website_link: string
+export interface Keys {
+  api_featured_image: string;
+  brand: string;
+  category: string;
+  created_at: string;
+  currency?: number;
+  description: string;
+  id: number;
+  image_link: string;
+  name: string;
+  price: string;
+  price_sign?: string;
+  product_api_url: string;
+  product_colors: [];
+  product_link: string;
+  product_type: string;
+  rating?: number;
+  tag_list: any;
+  updated_at: string;
+  website_link: string;
+}
 
 const App = () => {
-  const [items, setItems] = useState();
+  const [items, setItems] = useState<
+    | {
+        api_featured_image: string;
+        brand: string;
+        category: string;
+        created_at: string;
+        currency?: number;
+        description: string;
+        id: number;
+        image_link: string;
+        name: string;
+        price: string;
+        price_sign?: string;
+        product_api_url: string;
+        product_colors: [];
+        product_link: string;
+        product_type: string;
+        rating?: number;
+        tag_list: any;
+        updated_at: string;
+        website_link: string;
+      }[]
+    | undefined
+    | []
+  >();
   const [error, setError] = useState();
   const [brand, setBrand] = useState("");
   const [product, setProduct] = useState("");
@@ -104,11 +113,6 @@ const App = () => {
 };
 
 export default App;
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 36vh 36vh 36vh;
-`;
 
 const Container = styled.div`
   display: flex;
